@@ -23,8 +23,6 @@ public class TestHelper {
     public static void setup(String url) {
         System.setProperty("webdriver.chrome.driver", "lib/chromedriver");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-//        options.addArguments("--auto-open-devtools-for-tabs");
         drv = new ChromeDriver(options);
         get(url);
     }
@@ -39,7 +37,7 @@ public class TestHelper {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(targetxpath))).isDisplayed();
     }
 
-    //Take screenshot
+    //Take a screenshot
     public static void takeScreenshot(String filepath) throws IOException {
         File scr = ((TakesScreenshot)drv).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scr, new File(filepath));

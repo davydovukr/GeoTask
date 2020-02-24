@@ -13,6 +13,7 @@ public class Page {
     public static String year = "2000";
     public static String NOI  = "2000000";
 
+    //Log in
     public static void login(){
         WebDriverWait wait = new WebDriverWait(TestHelper.drv, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#email"))).sendKeys(Credentials.login);
@@ -20,6 +21,7 @@ public class Page {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button"))).click();
     }
 
+    //Fill in the provided parameters
     public static void fillParameters(){
         WebDriverWait wait = new WebDriverWait(TestHelper.drv, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='address_input']"))).sendKeys(address);
@@ -30,10 +32,12 @@ public class Page {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='occupancy']"))).sendKeys(occupancy);
     }
 
+    //Click the "Run Valuation" button
     public static void runValuationBtn(){
         TestHelper.drv.findElement(By.xpath("//button")).click();
     }
 
+    //Read the Confidence indicator value from DOM
     public static String indicatorValue(){
         WebDriverWait wait = new WebDriverWait(TestHelper.drv, 10);
         String value = wait.until(ExpectedConditions.visibilityOfElementLocated
